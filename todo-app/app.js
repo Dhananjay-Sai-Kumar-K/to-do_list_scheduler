@@ -10,13 +10,18 @@ form.addEventListener('submit', function(event) {
   const li = document.createElement('li');
   li.textContent = task;
 
+  // Add a class to mark as completed when clicked
+  li.addEventListener('click', function() {
+    li.classList.toggle('completed');
+  });
+
   // Create the delete button
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = '❌';
   deleteBtn.className = 'delete-btn';
 
-  // When delete is clicked, remove this task from the list
-  deleteBtn.addEventListener('click', function() {
+  deleteBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // So clicking delete doesn't also toggle completed
     li.remove();
   });
 
