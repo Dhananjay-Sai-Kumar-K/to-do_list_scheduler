@@ -4,47 +4,54 @@
   --glass-bg: rgba(255, 255, 255, 0.2);
   --text-color: #1e272e;
   --accent: #60a3bc;
+
   --btn-bg: #60a3bc;
   --btn-hover: #48b1bf;
   --btn-text: #ffffff;
+
   --high: #ff7675;
   --normal: #74b9ff;
   --low: #55efc4;
+
   --placeholder-opacity: 0.8;
 
-  /* Input & Select styles (light) */
-  --select-bg: rgba(255, 255, 255, 0.3);
-  --select-text: #1e272e;
-  --select-border: rgba(0, 0, 0, 0.2);
-
+  /* Light Mode Inputs */
   --input-bg: rgba(255, 255, 255, 0.3);
   --input-text: #1e272e;
   --input-border: rgba(0, 0, 0, 0.25);
   --input-placeholder: rgb(120, 120, 120);
+
+  --select-bg: rgba(255, 255, 255, 0.3);
+  --select-text: #1e272e;
+  --select-border: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] {
-  --bg-color: linear-gradient(135deg, #2d3436 0%, #000000 100%);
-  --glass-bg: rgba(0, 0, 0, 0.30);
+  --bg-color: linear-gradient(135deg, #1b1f22 0%, #000000 100%);
+  --glass-bg: rgba(10, 10, 10, 0.3);
   --text-color: #dfe6e9;
+
   --btn-bg: #0984e3;
   --btn-hover: #67b1fc;
   --btn-text: #ffffff;
-  --placeholder-opacity: 0.6;
 
-  --select-bg: rgba(40, 40, 40, 0.6);
-  --select-text: #dfe6e9;
-  --select-border: rgba(255, 255, 255, 0.15);
+  --placeholder-opacity: 0.6;
 
   --input-bg: rgba(40, 40, 40, 0.6);
   --input-text: #dfe6e9;
   --input-border: rgba(255, 255, 255, 0.15);
   --input-placeholder: rgb(200, 200, 200);
+
+  --select-bg: rgba(40, 40, 40, 0.6);
+  --select-text: #dfe6e9;
+  --select-border: rgba(255, 255, 255, 0.15);
 }
 
 /* ========== BASE STYLES ========== */
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
 
 body {
@@ -61,7 +68,7 @@ body {
   transition: background 0.5s, color 0.5s;
 }
 
-/* Header Section */
+/* Header */
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -74,6 +81,7 @@ body {
 .app-header h1 {
   font-weight: 600;
   font-size: 1.8em;
+  letter-spacing: 0.5px;
 }
 
 #theme-toggle {
@@ -81,22 +89,23 @@ body {
   background: var(--btn-bg);
   color: #fff;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  font-size: 1.1em;
-  transition: transform 0.3s, background 0.3s;
+  font-size: 1.2em;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 #theme-toggle:hover {
-  transform: rotate(20deg);
+  transform: rotate(25deg) scale(1.1);
   background: var(--btn-hover);
 }
 
-/* ========== CONTAINER ========== */
+/* Container */
 .container {
   background: var(--glass-bg);
   backdrop-filter: blur(12px) saturate(180%);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 2em;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   width: 90%;
@@ -104,26 +113,22 @@ body {
   transition: background 0.4s ease-in-out;
 }
 
-/* Glassmorphism border style */
-.glass {
-  border: 8px solid rgba(255, 255, 255, 0.25);
-}
-
-/* ========== FORM SECTION ========== */
+/* Forms */
 form {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1.4em;
 }
 
 .input-section {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
-/* Unified Inputs, Dropdowns, and Date-Time Styling */
+/* Inputs, dropdowns, date-time */
 input[type="text"],
 input[type="datetime-local"],
 select {
@@ -138,14 +143,12 @@ select {
   transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Placeholder coloring */
 input[type="text"]::placeholder {
   color: var(--input-placeholder);
   opacity: var(--placeholder-opacity);
   transition: color 0.4s ease, opacity 0.4s ease;
 }
 
-/* Hover and Focus Effects */
 input[type="text"]:hover,
 input[type="datetime-local"]:hover,
 select:hover {
@@ -162,39 +165,41 @@ input[type="text"]:focus,
 input[type="datetime-local"]:focus,
 select:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
 }
 
-/* Date-Time input adaptation */
+/* Date-Time dark mode fix */
 [data-theme="dark"] input[type="datetime-local"] {
   color-scheme: dark;
 }
 
-/* Button Styles */
+/* Buttons */
 button[type="submit"] {
-  padding: 0.6em 1em;
+  padding: 0.6em 1.2em;
   border: none;
   background: var(--btn-bg);
   color: var(--btn-text);
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 1.1em;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
 }
 button[type="submit"]:hover {
   background: var(--btn-hover);
-  transform: scale(1.05);
+  transform: translateY(-2px) scale(1.05);
 }
 
-/* ========== PROGRESS BAR ========== */
+/* Progress Bar */
 .progress {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 50px;
   height: 14px;
-  position: relative;
   overflow: hidden;
+  position: relative;
 }
-
 .progress-bar {
   background: linear-gradient(90deg, #55efc4, #74b9ff);
   width: 0%;
@@ -202,7 +207,6 @@ button[type="submit"]:hover {
   border-radius: 50px;
   transition: width 0.6s ease;
 }
-
 #progress-text {
   text-align: center;
   margin-top: 0.5em;
@@ -210,34 +214,56 @@ button[type="submit"]:hover {
   opacity: 0.9;
 }
 
-/* ========== TASK LIST ========== */
+/* Task Grid */
 .task-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
   list-style: none;
   padding: 0;
   margin: 1em 0 0 0;
 }
 
+/* Task Cards */
 li {
   background: rgba(255, 255, 255, 0.35);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 1em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  transition: 0.3s ease-in-out;
+  align-items: flex-start;
+  transition: all 0.35s ease;
   cursor: pointer;
-  animation: fadeIn 0.3s ease-in;
+  overflow: hidden;
+  position: relative;
+  max-height: 110px;
+}
+li p, li span, li small {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Hover expansion reveal */
 li:hover {
-  transform: translateY(-3px);
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.45);
+  max-height: 350px;
+  white-space: normal;
+  overflow-y: auto;
+  z-index: 5;
+}
+li:hover::-webkit-scrollbar {
+  width: 4px;
+}
+li:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
 }
 
-/* Priority color coding */
+/* Priority colors */
 li[data-priority="high"] { border-left: 6px solid var(--high); }
 li[data-priority="normal"] { border-left: 6px solid var(--normal); }
 li[data-priority="low"] { border-left: 6px solid var(--low); }
@@ -245,52 +271,45 @@ li[data-priority="low"] { border-left: 6px solid var(--low); }
 li.completed {
   text-decoration: line-through;
   opacity: 0.7;
-  background: rgba(200, 220, 230, 0.3);
+  background: rgba(200, 220, 230, 0.25);
 }
 
 /* Delete Button */
 .delete-btn {
+  align-self: flex-end;
+  margin-top: 6px;
   background: #d63031;
-  border: none;
   color: #fff;
-  border-radius: 6px;
+  border: none;
   padding: 0.4em 0.6em;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
 }
 .delete-btn:hover {
-  background: #e74c3c;
+  background: #ff5b5b;
+  transform: scale(1.1);
 }
 
-/* ========== FOOTER ========== */
+/* Footer */
 footer {
   text-align: center;
   margin: 2em 0 1em 0;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.9em;
 }
 
-/* ========== ANIMATIONS ========== */
+/* Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========== RESPONSIVE ========== */
+/* Responsive */
 @media (max-width: 650px) {
-  .app-header h1 {
-    font-size: 1.3em;
-  }
-
-  .container {
-    padding: 1.2em;
-  }
-
-  .input-section {
-    flex-direction: column;
-  }
-
-  button[type="submit"] {
-    width: 100%;
-  }
+  .app-header h1 { font-size: 1.3em; }
+  .container { padding: 1.2em; }
+  .input-section { flex-direction: column; }
+  button[type="submit"] { width: 100%; }
 }
