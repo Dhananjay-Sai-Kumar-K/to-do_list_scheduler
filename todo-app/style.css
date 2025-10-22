@@ -1,14 +1,120 @@
-.delete-btn {
-  margin-left: 10px;
-  color: white;
-  background: red;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 1em;
+body {
+  background: linear-gradient(135deg, #60a3bc 0%, #e17055 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.completed {
+
+.container {
+  background: white;
+  border-radius: 18px;
+  padding: 2em 2.5em;
+  box-shadow: 0 8px 28px rgba(60,60,120,0.15);
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #222f3e;
+  margin-top: 0;
+  margin-bottom: 1.4em;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.6em;
+  border: 1.5px solid #bbb;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+  border-color: #60a3bc;
+}
+
+button[type="submit"], .delete-btn {
+  padding: 0.6em 1.1em;
+  border: none;
+  border-radius: 6px;
+  background: #60a3bc;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #48b1bf;
+}
+
+ul#todo-list {
+  list-style: none;
+  margin: 1.4em 0 0 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6em;
+  padding: 0.75em 1em;
+  background: #f6f6f6;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px #b2bec332;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+li.completed {
+  background: #c8d6e5;
   text-decoration: line-through;
-  color: gray;
+  color: #636e72;
   opacity: 0.7;
 }
+
+.delete-btn {
+  background: #e17055;
+  margin-left: 10px;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #d63031;
+}
+
+li {
+  animation: fadeIn 0.25s;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1em;
+    min-width: unset;
+    width: 98%;
+  }
+  ul#todo-list li {
+    font-size: 0.94em;
+    padding: 0.7em 0.7em;
+  }
+}
+
