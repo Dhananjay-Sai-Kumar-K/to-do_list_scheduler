@@ -17,4 +17,9 @@
     "url": "https://github.com/Dhananjay-Sai-Kumar-K/to-do_list_scheduler/issues"
   },
   "homepage": "https://github.com/Dhananjay-Sai-Kumar-K/to-do_list_scheduler#readme",
- 
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.2"
+  }
+}
